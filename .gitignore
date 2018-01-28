@@ -20,3 +20,4 @@ var/
 .serverless
 secrets.yml
 .idea/
+ringenv/
