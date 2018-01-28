@@ -1,3 +1,4 @@
+import json
 from ring_doorbell import Ring
 import os
 import boto3
@@ -13,12 +14,26 @@ dynamodb = boto3.resource(
 table = dynamodb.Table('ring-device-events')
 
 
-def lambda_handler(event, context):
+def hello(event, context):
+    body = {
+        "message": "Go Serverless v1.0! Your function executed successfully!",
+        "input": event
+    }
+
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(body)
+    }
+
+    return response
+
+def collect(event, context):
     myring = Ring(username, password)
 
     push_to_dynamo(myring.doorbells)
     push_to_dynamo(myring.stickup_cams)
 
+    return "Done"
 
 def push_to_dynamo(devices):
     print("Writing event history for " + str(devices))
@@ -35,6 +50,3 @@ def push_to_dynamo(devices):
             }
 
             table.put_item(Item=dynamo_event)
-
-
-lambda_handler(None, None)
