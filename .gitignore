@@ -22,3 +22,4 @@ secrets.yml
 .idea/
 ringenv/
 node_modules/
+*.pyc

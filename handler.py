@@ -13,20 +13,6 @@ dynamodb = boto3.resource(
 
 table = dynamodb.Table('ring-device-events')
 
-
-def hello(event, context):
-    body = {
-        "message": "Go Serverless v1.0! Your function executed successfully!",
-        "input": event
-    }
-
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
-
-    return response
-
 def collect(event, context):
     myring = Ring(username, password)
 
