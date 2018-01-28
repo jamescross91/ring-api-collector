@@ -21,3 +21,4 @@ var/
 secrets.yml
 .idea/
 ringenv/
+node_modules/

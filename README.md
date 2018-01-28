@@ -10,3 +10,5 @@ PASS: ringpassword
 
 You can test locally with `serverless invoke local -f collect`.  When you're ready to deploy the stack run `serverless deploy -v`
 
+### Requirements
+Dependency packaging requires Docker to be installed, and you to be running Node 6 or greater.

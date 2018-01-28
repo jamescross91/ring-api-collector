@@ -13,9 +13,11 @@
 
 service: ring-event-collector # NOTE: update this with your service name
 
-# You can pin your service to only deploy with a specific Serverless version
-# Check out our docs for more details
-# frameworkVersion: "=X.X.X"
+plugins:
+  - serverless-python-requirements
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
 
 provider:
   name: aws
@@ -37,6 +39,7 @@ functions:
     environment:
       USER: ${file(secrets.yml):USER}
       PASS: ${file(secrets.yml):PASS}
+      HOME: /tmp
 
 resources:
   Resources:
